@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+
+  // BRAND COLOR
+  --white: #fff;
+  --black: #000;
+  --gray: #808080;
+
+  // TEXT COLOR
+  --text-white: #fff;
+  --text-black: #000;
+  --text-gray: #808080;
+
+  --primary-color-pink: #f53f7b;
+  --primary-color-blue: #4862c4;
+}

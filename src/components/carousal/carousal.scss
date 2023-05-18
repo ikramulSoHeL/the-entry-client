@@ -1,0 +1,75 @@
+.carousal {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+
+  .carousal__item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .carousal__item__title {
+      position: absolute;
+      width: 1150px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-content: center;
+      align-items: center;
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-pagination-bullet {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 12px;
+    color: white;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .swiper-pagination-bullet-active {
+    color: #fff;
+    background: var(--primary-color-pink);
+  }
+}
