@@ -3,8 +3,12 @@ import "./upcommingEvents.scss";
 
 import Wrapper from "../wrappers/Wrapper";
 
+// data import
+import upcommingEvents from "./data";
+
 // icon import
 import { GoLocation } from "react-icons/go";
+import { Link } from "react-router-dom";
 
 const UpcommingEvents = () => {
   return (
@@ -40,44 +44,54 @@ const UpcommingEvents = () => {
           </div>
 
           <div className="upcommingEvent__cardContainer">
-            <div className="upcommingEvent__cardItem">
-              <div className="upcommingEvent__cardItemImgContainer">
-                <img src="" alt="" />
-              </div>
-              <div className="upcommingEvent__cardItemTextContainer">
-                <span className="upcommingEvent__cardItemText">Event Name</span>
-                <span className="upcommingEvent__cardItemText">Event Date</span>
-                <span className="upcommingEvent__cardItemText">
-                  <GoLocation /> Event Location
-                </span>
-              </div>
-            </div>
+            {upcommingEvents.map((item, index) => (
+              <div className="upcommingEvent__cardItem">
+                <div className="upcommingEvent__cardItemImgContainer">
+                  <img src={item.image} alt="" />
+                </div>
 
-            <div className="upcommingEvent__cardItem">
-              <div className="upcommingEvent__cardItemImgContainer">
-                <img src="" alt="" />
-              </div>
-              <div className="upcommingEvent__cardItemTextContainer">
-                <span className="upcommingEvent__cardItemText">Event Name</span>
-                <span className="upcommingEvent__cardItemText">Event Date</span>
-                <span className="upcommingEvent__cardItemText">
-                  <GoLocation /> Event Location
-                </span>
-              </div>
-            </div>
+                <div className="upcommingEvent__dateContainer">
+                  <div className="upcommingEvent__dareCircle">
+                    <span className="upcommingEvent__dateContainer__month">
+                      {item.dateMonth}
+                    </span>
+                    <span className="upcommingEvent__dateContainer__date">
+                      {item.date}
+                    </span>
+                  </div>
+                </div>
 
-            <div className="upcommingEvent__cardItem">
-              <div className="upcommingEvent__cardItemImgContainer">
-                <img src="" alt="" />
+                <div className="upcommingEvent__cardItemTextContainer">
+                  <span className="upcommingEvent__cardItemText__eventName">
+                    {item.eventName}
+                  </span>
+                  <span className="upcommingEvent__cardItemText__desc">
+                    {item.desc}
+                  </span>
+                  <span className="upcommingEvent__cardItemText__location">
+                    <GoLocation /> {item.location}
+                  </span>
+                </div>
+
+                <div className="upcommingEvent__priceAndButtonContainer">
+                  <Link
+                    to="/event-details"
+                    className="upcommingEvent__priceAndButtonContainer__button"
+                  >
+                    Buy Ticket
+                  </Link>
+                  <span className="upcommingEvent__priceAndButtonContainer__price">
+                    ${item.price}
+                  </span>
+                </div>
               </div>
-              <div className="upcommingEvent__cardItemTextContainer">
-                <span className="upcommingEvent__cardItemText">Event Name</span>
-                <span className="upcommingEvent__cardItemText">Event Date</span>
-                <span className="upcommingEvent__cardItemText">
-                  <GoLocation /> Event Location
-                </span>
-              </div>
-            </div>
+            ))}
+          </div>
+
+          <div className="allEventsButton__container">
+            <Link to="/event-details" className="allEventsButton__text">
+              All Events
+            </Link>
           </div>
         </div>
       </Wrapper>

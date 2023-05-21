@@ -25,6 +25,10 @@ const Carousal = () => {
         pagination={pagination}
         modules={[Pagination]}
         loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
       >
         {carousalData.map((item) => (
           <SwiperSlide key={item.id}>

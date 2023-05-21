@@ -1,0 +1,143 @@
+// @import "../../mixins.scss";
+
+.authContainer {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .formBlock {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+    padding: 40px 30px;
+    box-sizing: border-box;
+
+    border: 1px solid var(--primary-color-pink);
+    border-radius: 5px;
+
+    // background-color: aqua;
+
+    // @include xsm {
+    //   width: 100%;
+    // }
+
+    h1 {
+      font-size: 34px;
+      font-weight: 600;
+      color: var(--primary-color-pink);
+    }
+
+    input {
+      width: 100%;
+      height: 50px;
+      font-size: 18px;
+      border-radius: 5px;
+      border: 1px solid var(--primary-color-pink);
+      padding: 0 10px;
+      outline: none;
+      transition: all ease 0.3s;
+
+      &:focus {
+        border: 1.5px solid var(--primary-color-blue);
+      }
+    }
+
+    span {
+      font-size: 18px;
+      color: var(--primary-color-blue);
+
+      .authLink {
+        text-decoration: none;
+        color: var(--primary-color-pink);
+        cursor: pointer;
+      }
+    }
+
+    .authError {
+      height: 5px;
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 18px;
+        color: var(--primary-color-pink);
+      }
+    }
+
+    button {
+      width: 100%;
+      height: 45px;
+      border-radius: 5px;
+      border: none;
+      background: var(--primary-color-pink);
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all ease 0.3s;
+
+      &:hover {
+        background: var(--primary-color-blue);
+      }
+    }
+  }
+}
+
+// .authContainer {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100vh;
+
+//   .formBlock {
+//     background-color: #f0f0f0;
+//     padding: 20px;
+//     border-radius: 5px;
+//     text-align: center;
+
+//     h1 {
+//       margin-bottom: 20px;
+//     }
+
+//     input {
+//       width: 100%;
+//       padding: 10px;
+//       margin-bottom: 10px;
+//       border: 1px solid #ccc;
+//       border-radius: 3px;
+//     }
+
+//     span {
+//       font-size: 14px;
+//       margin-top: 10px;
+//       display: block;
+//     }
+
+//     .authLink {
+//       color: #007bff;
+//       text-decoration: none;
+//     }
+
+//     .authError {
+//       color: red;
+//       margin-top: 10px;
+//     }
+
+//     button {
+//       width: 100%;
+//       padding: 10px;
+//       margin-top: 10px;
+//       background-color: #007bff;
+//       color: #fff;
+//       border: none;
+//       border-radius: 3px;
+//       cursor: pointer;
+//     }
+//   }
+// }

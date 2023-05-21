@@ -1,0 +1,288 @@
+.eventDetailsPage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--bg-lightGray);
+
+  .eventDetailsPage__container {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    gap: 40px;
+
+    .eventDetailsPage__container__left {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+      box-sizing: border-box;
+      border: 1px solid var(--gray);
+      border-radius: 10px;
+      gap: 30px;
+
+      background-color: var(--bg-white);
+
+      .edcl__image {
+        width: 100%;
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+      }
+
+      .edcl__details {
+        display: flex;
+        flex-direction: column;
+
+        padding-bottom: 30px;
+        border-bottom: 1px solid var(--gray);
+
+        span {
+          font-size: 20px;
+          text-align: justify;
+          line-height: 1.5;
+        }
+      }
+
+      .edcl__tagButtonContainer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 5px 10px;
+        box-sizing: border-box;
+
+        .edcl__tagButtonContainer__tag {
+          display: flex;
+          color: var(--primary-color-pink);
+
+          gap: 10px;
+
+          span {
+            font-size: 20px;
+          }
+
+          i {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+
+    .eventDetailsPage__container__right {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      gap: 40px;
+
+      .edpR__detailsContainer {
+        margin-top: 100px;
+        display: flex;
+        flex-direction: column;
+
+        gap: 20px;
+        padding: 30px;
+        box-sizing: border-box;
+        border: 1px solid var(--gray);
+        border-radius: 10px;
+
+        .edpR__detailsContainer__titleAndcart {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          span {
+            font-size: 25px;
+            font-weight: 600;
+
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color-pink);
+          }
+
+          i {
+            font-size: 25px;
+            color: var(--primary-color-pink);
+            cursor: pointer;
+          }
+        }
+
+        .edpR__detailsContainer__details {
+          display: flex;
+          flex-direction: column;
+
+          gap: 15px;
+
+          .edpR__row {
+            display: grid;
+            grid-template-columns: 0.6fr 1fr;
+
+            gap: 40px;
+
+            .edpR__row__left {
+              span {
+                font-size: 18px;
+                font-weight: 600;
+              }
+            }
+
+            .edpR__row__right {
+              span {
+                font-size: 18px;
+                color: var(--gray);
+              }
+            }
+          }
+        }
+
+        .mapContainer {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+
+          gap: 20px;
+
+          span {
+            width: max-content;
+            font-size: 25px;
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--primary-color-pink);
+          }
+
+          iframe {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+          }
+        }
+      }
+
+      .organizers__container {
+        display: flex;
+        flex-direction: column;
+
+        padding: 30px;
+        box-sizing: border-box;
+        border: 1px solid var(--gray);
+        border-radius: 10px;
+
+        .organizerDetails {
+          display: flex;
+          flex-direction: column;
+
+          gap: 20px;
+
+          .organizerDetailsr__title {
+            display: flex;
+            span {
+              font-size: 25px;
+              font-weight: 600;
+              padding-bottom: 5px;
+              border-bottom: 2px solid var(--primary-color-pink);
+            }
+          }
+
+          .orginazerDetails__row {
+            display: grid;
+            grid-template-columns: 0.6fr 1fr;
+
+            gap: 40px;
+
+            .orginazerDetails__row__left {
+              span {
+                font-size: 18px;
+                font-weight: 600;
+              }
+            }
+
+            .orginazerDetails__row__right {
+              span {
+                font-size: 18px;
+                color: var(--gray);
+              }
+            }
+          }
+        }
+      }
+
+      .getTicketContainer {
+        display: flex;
+        flex-direction: column;
+
+        padding: 30px;
+        box-sizing: border-box;
+        border: 1px solid var(--gray);
+        border-radius: 10px;
+        gap: 20px;
+
+        .getTicketContainer__title {
+          display: flex;
+          span {
+            font-size: 25px;
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--primary-color-pink);
+          }
+        }
+
+        .getTicketContainer__row {
+          display: grid;
+          grid-template-columns: 0.6fr 1fr;
+
+          gap: 40px;
+
+          .getTicketContainer__row__left {
+            span {
+              font-size: 18px;
+              font-weight: 600;
+            }
+          }
+
+          .getTicketContainer__row__right {
+            span {
+              font-size: 18px;
+              color: var(--gray);
+            }
+          }
+        }
+
+        .getTicket__buttonContainer {
+          width: 100%;
+          display: flex;
+
+          button {
+            width: 100%;
+            height: 50px;
+            border: none;
+            border-radius: 10px;
+            background-color: var(--primary-color-pink);
+            color: var(--bg-white);
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+
+            &:hover {
+              background-color: var(--primary-color-blue);
+              transition: all 0.5s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+  }
+}
