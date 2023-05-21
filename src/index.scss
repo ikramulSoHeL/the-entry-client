@@ -32,3 +32,8 @@ body {
   --bg-pink: #f53f7b;
   --bg-blue: #4862c4;
 }
+
+// hode scrollbar
+::-webkit-scrollbar {
+  display: none;
+}

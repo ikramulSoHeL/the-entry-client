@@ -36,20 +36,6 @@ const Navbar = () => {
       });
   };
 
-  // for theme
-  const [theme, setTheme] = useState("dark_theme");
-  const toggleTheme = () => {
-    if (theme === "dark_theme") {
-      setTheme("light_theme");
-    } else {
-      setTheme("dark_theme");
-    }
-  };
-
-  useEffect(() => {
-    document.body.classList = theme;
-  }, [theme]);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
@@ -79,8 +65,8 @@ const Navbar = () => {
   const navigationHandler = (type) => {
     if (type === "home") {
       navigate(`/`);
-    } else if (type === "about") {
-      navigate(`/about-us/about`);
+    } else if (type === "events") {
+      navigate(`/all-events`);
     } else if (type === "services") {
       navigate(`/services`);
     } else if (type === "contact") {
@@ -115,11 +101,11 @@ const Navbar = () => {
             </li>
             <li
               className={
-                location.pathname === "/about-us/about"
+                location.pathname === "/all-events"
                   ? "menuItem active"
                   : "menuItem"
               }
-              onClick={() => navigationHandler("about")}
+              onClick={() => navigationHandler("events")}
             >
               Events
             </li>
