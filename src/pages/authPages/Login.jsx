@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./auth.scss";
+import "../../styles/pages/index.scss";
 
 import { Link, useNavigate } from "react-router-dom";
 

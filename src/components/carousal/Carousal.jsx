@@ -1,5 +1,5 @@
 import React from "react";
-import "./carousal.scss";
+import "../../styles/components/index.scss";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
+import { Autoplay, Navigation } from "swiper";
 
 import carousalData from "./data";
 
@@ -23,12 +24,12 @@ const Carousal = () => {
       <Swiper
         className="mySwiper"
         pagination={pagination}
-        modules={[Pagination]}
         loop={true}
         autoplay={{
-          delay: 2500,
+          delay: 5000,
           disableOnInteraction: false,
         }}
+        modules={[Autoplay, Pagination, Navigation]}
       >
         {carousalData.map((item) => (
           <SwiperSlide key={item.id}>
@@ -36,6 +37,7 @@ const Carousal = () => {
               <img src={item.image} alt={item.title} />
               <div className="carousal__item__title">
                 <h1>{item.title}</h1>
+                <h1>{item.title2}</h1>
               </div>
             </div>
           </SwiperSlide>

@@ -1,4 +1,4 @@
-@import "../../mixins.scss";
+@import "../../styles//foundations/mixins";
 
 .navbar {
   position: fixed;
@@ -10,6 +10,10 @@
   align-items: center;
   transition: all ease 0.5s;
   z-index: 2;
+
+  @include tablet {
+    padding: 0 20px;
+  }
 
   &.top {
     background: var(--bg-blue);
@@ -38,19 +42,20 @@
     img {
       height: 40px;
 
-      @include md {
+      @include tablet {
         height: 20px;
       }
     }
 
-    span {
+    .homeLogoText {
       width: max-content;
+      text-decoration: none;
       font-size: 30px;
       font-weight: 700;
       color: var(--pink);
       margin-left: 5px;
 
-      @include sm {
+      @include portraitTablet {
         font-size: 20px;
       }
     }
@@ -66,7 +71,7 @@
       display: flex;
       align-items: center;
 
-      @include md {
+      @include tablet {
         display: none;
       }
 
@@ -110,7 +115,7 @@
     align-items: center;
     gap: 20px;
 
-    @include md {
+    @include tablet {
       display: flex;
     }
     svg {
@@ -130,7 +135,7 @@
       background: var(--bg-blue);
       flex-direction: column;
       width: 100%;
-      padding: 10px 0;
+      padding: 10px 10px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       animation: mobileMenu 0.3s ease forwards;
 

@@ -1,10 +1,33 @@
-import React from "react";
-import "./eventDetailsPage.scss";
+import React, { useEffect, useState } from "react";
+import "../../styles/pages/index.scss";
 
 import ContentWrapper from "../../components/wrappers/Wrapper";
 import Carousal from "../../components/carousal/Carousal";
 
+import { loadStorage } from "../../utils/persistLocalStorage";
+import { Link } from "react-router-dom";
+
+import { getEventById } from "../../apis/event.apis";
+
 const EventDetailsPage = () => {
+  const user = loadStorage("user");
+  const eventId = window.location.pathname.split("/")[2];
+
+  const [event, setEvent] = useState({});
+
+  useEffect(() => {
+    try {
+      getEventById(eventId).then((res) => {
+        setEvent(res.data.data);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
+
+  // formate event date
+  const eventDate = new Date(event.date).toDateString();
+
   return (
     <div className="eventDetailsPage">
       <Carousal />
@@ -12,46 +35,26 @@ const EventDetailsPage = () => {
       <ContentWrapper>
         <div className="eventDetailsPage__container">
           <div className="eventDetailsPage__container__left">
-            <div className="edcl__image">
-              <img
-                src="https://ovatheme.com/em4u/wp-content/uploads/2017/10/event_festival_1.jpg"
-                alt=""
-              />
-            </div>
-
-            <div className="edcl__details">
-              <span>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry’s standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. <br />
-                <br /> It was popularised in the 1960s with the release of
-                Letraset sheets containing Lorem Ipsum passages, and more
-                recently with desktop publishing software like Aldus PageMaker
-                including versions of Lorem Ipsum. It was popularised in the
-                1960s with the release of Letraset sheets containing Lorem Ipsum
-                passages, and more recently with desktop publishing software
-                like Aldus PageMaker including versions of Lorem Ipsum.
-                <br /> <br />
-                It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with
-                desktop publishing software like Aldus PageMaker including
-                versions of Lorem Ipsum. It was popularised in the 1960s with
-                the release of Letraset sheets containing Lorem Ipsum passages,
-                and more recently with desktop publishing software like Aldus
-                PageMaker including versions of Lorem Ipsum.
-              </span>
-            </div>
-
-            <div className="edcl__tagButtonContainer">
-              <div className="edcl__tagButtonContainer__tag">
-                <span>Tag1</span>
+            <div className="edcl__container">
+              <div className="edcl__image">
+                <img
+                  src="https://ovatheme.com/em4u/wp-content/uploads/2017/10/event_festival_1.jpg"
+                  alt=""
+                />
               </div>
-              <div className="edcl__tagButtonContainer__tag">
-                <i className="fas fa-share-alt"></i>
-                <i className="fas fa-heart"></i>
+
+              <div className="edcl__details">
+                <span>{event.description}</span>
+              </div>
+
+              <div className="edcl__tagButtonContainer">
+                <div className="edcl__tagButtonContainer__tag">
+                  <span>Tags</span>
+                </div>
+                <div className="edcl__tagButtonContainer__tag">
+                  <i className="fas fa-share-alt"></i>
+                  <i className="fas fa-heart"></i>
+                </div>
               </div>
             </div>
           </div>
@@ -69,7 +72,7 @@ const EventDetailsPage = () => {
                     <span>Start Date:</span>
                   </div>
                   <div className="edpR__row__right">
-                    <span>12/12/2020</span>
+                    <span>{eventDate}</span>
                   </div>
                 </div>
 
@@ -78,7 +81,7 @@ const EventDetailsPage = () => {
                     <span>Venue:</span>
                   </div>
                   <div className="edpR__row__right">
-                    <span>Ewu Campus</span>
+                    <span>{event.vanue}</span>
                   </div>
                 </div>
 
@@ -87,7 +90,7 @@ const EventDetailsPage = () => {
                     <span>Address:</span>
                   </div>
                   <div className="edpR__row__right">
-                    <span>Aftabnagar, Badda, Dhaka 1212</span>
+                    <span>{event.locationAddress}</span>
                   </div>
                 </div>
               </div>
@@ -117,16 +120,16 @@ const EventDetailsPage = () => {
                     <span>Name:</span>
                   </div>
                   <div className="orginazerDetails__row__right">
-                    <span>John Doe</span>
+                    <span>{event.organizerName}</span>
                   </div>
                 </div>
 
                 <div className="orginazerDetails__row">
                   <div className="orginazerDetails__row__left">
-                    <span>Email:</span>
+                    <span>Website:</span>
                   </div>
                   <div className="orginazerDetails__row__right">
-                    <span>xxx@gmail.com</span>
+                    <span>{event.organizerWebsite}</span>
                   </div>
                 </div>
 
@@ -135,7 +138,7 @@ const EventDetailsPage = () => {
                     <span>Phone:</span>
                   </div>
                   <div className="orginazerDetails__row__right">
-                    <span>+880 01955445464</span>
+                    <span>{event.organizerPhone}</span>
                   </div>
                 </div>
 
@@ -144,9 +147,7 @@ const EventDetailsPage = () => {
                     <span>Description:</span>
                   </div>
                   <div className="orginazerDetails__row__right">
-                    <span>
-                      Lorem Ipsum is simply dummy text of the printing and
-                    </span>
+                    <span>{event.organizerDesc}</span>
                   </div>
                 </div>
               </div>
@@ -162,13 +163,26 @@ const EventDetailsPage = () => {
                   <span>Price:</span>
                 </div>
                 <div className="getTicketContainer__row__right">
-                  <span>$ 1000</span>
+                  <span>$ {event.ticketPrice}</span>
                 </div>
               </div>
 
-              <div className="getTicket__buttonContainer">
-                <button>Get Ticket</button>
-              </div>
+              {user ? (
+                <div className="getTicket__buttonContainer">
+                  <Link
+                    to={`/ticket-details/${event._id}`}
+                    className="getTicket__btn"
+                  >
+                    Get Ticket
+                  </Link>
+                </div>
+              ) : (
+                <div className="getTicket__buttonContainer">
+                  <Link to="/auth/login" className="getTicket__btn">
+                    Get Ticket
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

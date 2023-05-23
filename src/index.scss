@@ -20,6 +20,7 @@ body {
   --text-black: #000;
   --text-gray: #808080;
   --text-pink: #f53f7b;
+  --text-blue: #4862c4;
 
   --primary-color-pink: #f53f7b;
   --primary-color-blue: #4862c4;
@@ -36,4 +37,17 @@ body {
 // hode scrollbar
 ::-webkit-scrollbar {
   display: none;
+}
+
+// hide number input arrows
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

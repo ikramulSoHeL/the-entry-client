@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./navbar.scss";
+import "../../styles/components/index.scss";
 
 import { loadStorage } from "../../utils/persistLocalStorage";
 import { logout } from "../../utils/helper";
@@ -20,21 +20,6 @@ const Navbar = () => {
   const location = useLocation();
 
   let user = loadStorage("user");
-
-  // handle logout
-  const handleLogout = () => {
-    logoutUser({
-      refreshToken: loadStorage("refreshToken"),
-    })
-      .then((res) => {
-        // console.log(res);
-        navigate("/");
-        logout();
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
-  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -67,10 +52,6 @@ const Navbar = () => {
       navigate(`/`);
     } else if (type === "events") {
       navigate(`/all-events`);
-    } else if (type === "services") {
-      navigate(`/services`);
-    } else if (type === "contact") {
-      navigate(`/about-us/contact`);
     } else if (type === "user") {
       navigate("/auth/login");
     } else if (type === "userName") {
@@ -81,12 +62,27 @@ const Navbar = () => {
     setMobileMenu(false);
   };
 
+  const handleLogout = () => {
+    logoutUser({
+      refreshToken: loadStorage("refreshToken"),
+    })
+      .then((res) => {
+        navigate("/");
+        logout();
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
   return (
     <header className={`navbar ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
         <Link to="/" className="logo">
-          {/* <img src={logo} alt="" /> */}
-          <span>The Entry</span>
+          {/* <img src={logo} alt="logo" /> */}
+          <Link to="/" className="homeLogoText">
+            The Entry
+          </Link>
         </Link>
 
         <div className="navRightContent">
@@ -109,31 +105,11 @@ const Navbar = () => {
             >
               Events
             </li>
-            <li
-              className={
-                location.pathname === "/services"
-                  ? "menuItem active"
-                  : "menuItem"
-              }
-              onClick={() => navigationHandler("services")}
-            >
-              Services
-            </li>
-            <li
-              className={
-                location.pathname === "/about-us/contact"
-                  ? "menuItem active"
-                  : "menuItem"
-              }
-              onClick={() => navigationHandler("contact")}
-            >
-              Contact
-            </li>
 
             {user ? (
               <li
                 className={
-                  location.pathname === "/profile"
+                  location.pathname === `/profile/${user._id}`
                     ? "menuItem active"
                     : "menuItem"
                 }
@@ -145,7 +121,7 @@ const Navbar = () => {
             ) : (
               <li
                 className={
-                  location.pathname === "/profile"
+                  location.pathname === "/profile/:id"
                     ? "menuItem active"
                     : "menuItem"
                 }
@@ -163,7 +139,7 @@ const Navbar = () => {
                     ? "menuItem active"
                     : "menuItem"
                 }
-                onClick={() => handleLogout()}
+                onClick={handleLogout}
               >
                 Logout
               </li>

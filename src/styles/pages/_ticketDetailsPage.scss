@@ -1,0 +1,246 @@
+@import "../../styles/foundations/mixins.scss";
+
+.ticketDetailsPage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @include mediumTablet {
+    height: 100%;
+  }
+
+  .ticketDetailsPage_container {
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 0.6fr;
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+
+    @include mediumTablet {
+      margin-top: 20px;
+      width: 90%;
+      height: 100%;
+      grid-template-columns: 1fr;
+    }
+
+    .ticketDetailsPage__left {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      padding: 20px;
+      box-sizing: border-box;
+      border: 1px solid var(--gray);
+      border-radius: 10px;
+
+      .tdp__leftContainer {
+        display: flex;
+        flex-direction: column;
+
+        gap: 20px;
+
+        .tdp__leftImage {
+          width: 100%;
+          height: 250px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+          }
+        }
+
+        .tdp__leftContent {
+          display: flex;
+          flex-direction: column;
+
+          gap: 15px;
+
+          .tdp__leftRow {
+            display: grid;
+            grid-template-columns: 0.6fr 1fr;
+
+            @include miniPortraitTablet {
+              display: flex;
+              flex-direction: column;
+              gap: 5px;
+              height: 100%;
+              grid-template-columns: 1fr;
+            }
+
+            .tdp__leftRowTitle {
+              span {
+                font-size: 16px;
+                font-weight: 700;
+                color: var(--text-pink);
+              }
+            }
+
+            .tdp__leftRowdetails {
+              p {
+                font-size: 16px;
+                color: var(--gray);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .ticketDetailsPage__right {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .tdp__rightContainer {
+        width: 100%;
+        height: max-content;
+        display: flex;
+        flex-direction: column;
+
+        padding: 20px;
+        box-sizing: border-box;
+        border: 1px solid var(--gray);
+        border-radius: 10px;
+        gap: 15px;
+
+        .tdp__rightTitle {
+          h2 {
+            font-size: 25px;
+            font-weight: 700;
+            color: var(--text-pink);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--pink);
+          }
+        }
+
+        .tdp__rightRow {
+          display: flex;
+          justify-content: space-between;
+
+          .tdp__rightRowTitle {
+            span {
+              font-size: 16px;
+              font-weight: 550;
+              color: var(--text-blue);
+            }
+          }
+
+          .tdp__rightRowdetails {
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            p {
+              font-size: 16px;
+            }
+
+            .qnt__btn {
+              font-size: 18px;
+              padding: 0 5px;
+              border-radius: 5px;
+              border: 1px solid var(--pink);
+              cursor: pointer;
+            }
+
+            input {
+              border: none;
+              outline: none;
+              width: 30px;
+              height: 20px;
+              font-size: 16px;
+              padding: 2px 5px;
+              box-sizing: border-box;
+            }
+
+            .priceInput {
+              width: 100px;
+              text-align: right;
+            }
+          }
+        }
+
+        .vatText {
+          p {
+            font-size: 14px;
+          }
+        }
+
+        .paymentMethods__container {
+          display: flex;
+          flex-direction: column;
+
+          .paymentMethod__title {
+            span {
+              font-size: 16px;
+              font-weight: 700;
+              color: var(--text-pink);
+              padding-bottom: 10px;
+              box-sizing: border-box;
+              border-bottom: 2px solid var(--pink);
+            }
+          }
+
+          .paymentMethod__logoContainer {
+            display: flex;
+            gap: 15px;
+
+            .paymentMethod__logo {
+              margin-top: 22px;
+              width: 40px;
+              height: 40px;
+              display: flex;
+              cursor: pointer;
+              padding: 2px;
+              border: 2px solid var(--gray);
+              border-radius: 5px;
+              transition: all 0.5s ease;
+
+              &:hover {
+                border: 2px solid var(--pink);
+                transform: scale(1.1);
+                transition: all 0.5s ease;
+              }
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+              }
+            }
+          }
+        }
+
+        .paymentBtn__container {
+          .paymentBtn {
+            width: 100%;
+            height: 40px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background-color: var(--pink);
+            color: var(--text-white);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background-color: var(--bg-blue);
+              transition: all 0.3s ease;
+            }
+          }
+        }
+      }
+    }
+  }
+}

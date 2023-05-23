@@ -1,16 +1,13 @@
-import React from "react";
-import "./upcommingEvents.scss";
+import React, { useState } from "react";
+import "../../styles/components/index.scss";
 
 import Wrapper from "../wrappers/Wrapper";
-
-// data import
-import upcommingEvents from "./data";
 
 // icon import
 import { GoLocation } from "react-icons/go";
 import { Link } from "react-router-dom";
 
-const UpcommingEvents = () => {
+const UpcommingEvents = ({ data }) => {
   return (
     <div className="upcommingEvents">
       <Wrapper>
@@ -18,7 +15,7 @@ const UpcommingEvents = () => {
           <div className="upcommingEvents__headerContainer">
             <h1 className="upcommingEvents__headerText">Upcomming Events</h1>
             <span className="upcommingEvents__descText">
-              You can configure x closest date to display
+              Most Treanding Upcomming Events
             </span>
           </div>
 
@@ -44,17 +41,17 @@ const UpcommingEvents = () => {
           </div>
 
           <div className="upcommingEvent__cardContainer">
-            {upcommingEvents.map((item, index) => (
+            {data.map((item, index) => (
               <div className="upcommingEvent__cardItem">
                 <div className="upcommingEvent__cardItemImgContainer">
-                  <img src={item.image} alt="" />
+                  <img
+                    src="https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt=""
+                  />
                 </div>
 
                 <div className="upcommingEvent__dateContainer">
                   <div className="upcommingEvent__dareCircle">
-                    <span className="upcommingEvent__dateContainer__month">
-                      {item.dateMonth}
-                    </span>
                     <span className="upcommingEvent__dateContainer__date">
                       {item.date}
                     </span>
@@ -63,25 +60,25 @@ const UpcommingEvents = () => {
 
                 <div className="upcommingEvent__cardItemTextContainer">
                   <span className="upcommingEvent__cardItemText__eventName">
-                    {item.eventName}
+                    {item.title}
                   </span>
                   <span className="upcommingEvent__cardItemText__desc">
-                    {item.desc}
+                    {item.description.slice(0, 100)}......
                   </span>
                   <span className="upcommingEvent__cardItemText__location">
-                    <GoLocation /> {item.location}
+                    <GoLocation /> {item.vanue}
                   </span>
                 </div>
 
                 <div className="upcommingEvent__priceAndButtonContainer">
                   <Link
-                    to="/event-details"
+                    to={`/event-details/${item._id}`}
                     className="upcommingEvent__priceAndButtonContainer__button"
                   >
                     Buy Ticket
                   </Link>
                   <span className="upcommingEvent__priceAndButtonContainer__price">
-                    ${item.price}
+                    ${item.ticketPrice}
                   </span>
                 </div>
               </div>
@@ -89,7 +86,7 @@ const UpcommingEvents = () => {
           </div>
 
           <div className="allEventsButton__container">
-            <Link to="/event-details" className="allEventsButton__text">
+            <Link to="/all-events" className="allEventsButton__text">
               All Events
             </Link>
           </div>
