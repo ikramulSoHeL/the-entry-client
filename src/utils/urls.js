@@ -1,7 +1,7 @@
 var BASE_URL;
 
-BASE_URL = "http://localhost:5002/api";
-// BASE_URL = "https://toothzy-server.onrender.com/api";
+// BASE_URL = "http://localhost:5002/api";
+BASE_URL = "https://the-entry-server-qdz2.onrender.com/api";
 
 // AUTH
 export const LOGIN_URL = BASE_URL + "/auth/login";
