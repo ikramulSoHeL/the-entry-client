@@ -73,6 +73,8 @@ const Navbar = () => {
       .catch((err) => {
         console.log(err.response);
       });
+
+    setMobileMenu(false);
   };
 
   return (
@@ -139,7 +141,7 @@ const Navbar = () => {
                     ? "menuItem active"
                     : "menuItem"
                 }
-                onClick={handleLogout}
+                onClick={() => handleLogout()}
               >
                 Logout
               </li>

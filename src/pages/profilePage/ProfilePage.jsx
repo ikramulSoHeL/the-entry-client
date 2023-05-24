@@ -53,7 +53,9 @@ const ProfilePage = () => {
             </div>
 
             {loading ? (
-              <div className="loading">Loading...</div>
+              <div className="loading">
+                <h3>Loading.....</h3>
+              </div>
             ) : (
               <div className="TicketCardContainer">
                 {tickets.length === 0 ? (

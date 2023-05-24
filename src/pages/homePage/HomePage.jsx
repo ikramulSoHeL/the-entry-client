@@ -8,11 +8,14 @@ import { getEvents } from "../../apis/event.apis";
 
 const HomePage = () => {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [sliceEvents, setSliceEvents] = useState([]);
 
   useEffect(() => {
+    setLoading(true);
     try {
       getEvents().then((res) => {
+        setLoading(false);
         setEvents(res.data.data);
       });
     } catch (err) {
@@ -33,7 +36,7 @@ const HomePage = () => {
   return (
     <div className="homePage">
       <Carousal />
-      <UpcommingEvents data={sliceEvents} />
+      <UpcommingEvents data={sliceEvents} loading={loading} />
     </div>
   );
 };
