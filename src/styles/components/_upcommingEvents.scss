@@ -118,7 +118,11 @@
 
       gap: 40px;
 
-      @include mediumTablet {
+      @include extraLargeTablet {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include portraitTablet {
         grid-template-columns: repeat(1, 1fr);
         box-sizing: border-box;
       }
