@@ -26,7 +26,7 @@ const HomePage = () => {
   useEffect(() => {
     setSliceEvents(
       events
-        .slice(0, 6)
+        .slice(events.length - 6, events.length)
         .map((item) => ({ ...item, date: new Date(item.date).toDateString() }))
     );
   }, [events]);
