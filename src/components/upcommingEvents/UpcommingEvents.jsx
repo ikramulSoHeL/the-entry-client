@@ -47,7 +47,7 @@ const UpcommingEvents = ({ data, loading }) => {
           ) : (
             <div className="upcommingEvent__cardContainer">
               {data.map((item, index) => (
-                <div className="upcommingEvent__cardItem">
+                <div className="upcommingEvent__cardItem" key={index}>
                   <div className="upcommingEvent__cardItemImgContainer">
                     <img
                       src="https://images.pexels.com/photos/2263436/pexels-photo-2263436.jpeg?auto=compress&cs=tinysrgb&w=600"

@@ -31,8 +31,6 @@ const HomePage = () => {
     );
   }, [events]);
 
-  console.log(events);
-
   return (
     <div className="homePage">
       <Carousal />
