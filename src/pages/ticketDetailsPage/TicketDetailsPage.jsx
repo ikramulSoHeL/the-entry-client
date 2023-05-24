@@ -7,6 +7,12 @@ import { buyTickets } from "../../apis/ticket.apis";
 import { loadStorage } from "../../utils/persistLocalStorage";
 import { useNavigate } from "react-router-dom";
 
+// logos
+import bKash from "../../assets/bkash-logo.png";
+import rocket from "../../assets/rocket-logo.png";
+import nagad from "../../assets/Nagad-Logo.png";
+import paypal from "../../assets/paypal.png";
+
 // Toaster
 import { createToastMessage } from "../../utils/toastUtil";
 import Toast from "../../components/toast/Toast";
@@ -234,31 +240,19 @@ const TicketDetailsPage = () => {
 
                       <div className="paymentMethod__logoContainer">
                         <div className="paymentMethod__logo">
-                          <img
-                            src="https://freelogopng.com/images/all_img/1656234745bkash-app-logo-png.png"
-                            alt=""
-                          />
+                          <img src={bKash} alt="" />
                         </div>
 
                         <div className="paymentMethod__logo">
-                          <img
-                            src="https://freelogopng.com/images/all_img/1679248787Nagad-Logo.png"
-                            alt=""
-                          />
+                          <img src={nagad} alt="" />
                         </div>
 
                         <div className="paymentMethod__logo">
-                          <img
-                            src="https://seeklogo.com/images/D/dutch-bangla-rocket-logo-B4D1CC458D-seeklogo.com.png"
-                            alt=""
-                          />
+                          <img src={rocket} alt="" />
                         </div>
 
                         <div className="paymentMethod__logo">
-                          <img
-                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8hgrPGW_aZAajlWhJnTI-kesQ9LPX-95ohkP6_DUYjfyYyQWyjq3vVJuL-treRL4C9UE&usqp=CAU"
-                            alt=""
-                          />
+                          <img src={paypal} alt="" />
                         </div>
                       </div>
                     </div>

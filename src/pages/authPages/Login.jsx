@@ -6,10 +6,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../apis/auth.apis";
 import { saveStorage } from "../../utils/persistLocalStorage";
 
+// Toaster
+import { createToastMessage } from "../../utils/toastUtil";
+import Toast from "../../components/toast/Toast";
+
 const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [serverErrors, setServerErrors] = useState(null);
+
+  const [position, setPosition] = useState("top-right1");
+  const [toastList, setToastList] = useState([]);
 
   const [loginInputs, setLoginInputs] = useState({
     username: "",
@@ -54,7 +61,17 @@ const Login = () => {
           saveStorage("user", res.data.data.user);
           saveStorage("accessToken", res.data.data.accessToken);
           saveStorage("refreshToken", res.data.data.refreshToken);
-          navigate("/");
+
+          createToastMessage(
+            "success",
+            "Success",
+            res.data.message,
+            toastList,
+            setToastList
+          );
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
         })
         .catch((err) => {
           console.log(err.response);
@@ -66,41 +83,50 @@ const Login = () => {
   };
 
   return (
-    <div className="authContainer">
-      <div className="formBlock">
-        <h1>Login</h1>
+    <>
+      <div className="authContainer">
+        <div className="formBlock">
+          <h1>Login</h1>
 
-        <input
-          type="text"
-          placeholder="Enter your username"
-          value={loginInputs.username}
-          onChange={(e) => handleLoginInputs("username", e)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={loginInputs.password}
-          onChange={(e) => handleLoginInputs("password", e)}
-          required
-        />
+          <input
+            type="text"
+            placeholder="Enter your username"
+            value={loginInputs.username}
+            onChange={(e) => handleLoginInputs("username", e)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={loginInputs.password}
+            onChange={(e) => handleLoginInputs("password", e)}
+            required
+          />
 
-        <span>
-          Don't have an account?{" "}
-          <Link to="/auth/register" className="authLink">
-            Register
-          </Link>
-        </span>
+          <span>
+            Don't have an account?{" "}
+            <Link to="/auth/register" className="authLink">
+              Register
+            </Link>
+          </span>
 
-        <div className="authError">
-          {serverErrors && <span>{serverErrors}</span>}
+          <div className="authError">
+            {serverErrors && <span>{serverErrors}</span>}
+          </div>
+
+          <button typeof="submit" onClick={(e) => handleLogin(e)}>
+            Login
+          </button>
         </div>
-
-        <button typeof="submit" onClick={(e) => handleLogin(e)}>
-          Login
-        </button>
       </div>
-    </div>
+
+      <Toast
+        toastList={toastList}
+        position={position}
+        autoDelete={true}
+        autoDeleteTime={666000}
+      />
+    </>
   );
 };
 

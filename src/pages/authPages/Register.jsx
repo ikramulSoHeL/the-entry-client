@@ -4,10 +4,17 @@ import "../../styles/pages/index.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../apis/auth.apis";
 
+// Toaster
+import { createToastMessage } from "../../utils/toastUtil";
+import Toast from "../../components/toast/Toast";
+
 const Register = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [serverErrors, setServerErrors] = useState(null);
+
+  const [position, setPosition] = useState("top-right1");
+  const [toastList, setToastList] = useState([]);
 
   const EMAIL_REGEX = /^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$/;
   const USERNAME_REGEX = /^[a-zA-Z0-9_]*$/;
@@ -90,7 +97,17 @@ const Register = () => {
             password: "",
             confirmPassword: "",
           });
-          navigate("/auth/login");
+
+          createToastMessage(
+            "success",
+            "Success",
+            res.data.message,
+            toastList,
+            setToastList
+          );
+          setTimeout(() => {
+            navigate("/auth/login");
+          }, 2000);
         })
         .catch((err) => {
           console.log(err.response);
@@ -101,54 +118,63 @@ const Register = () => {
   };
 
   return (
-    <div className="authContainer">
-      <div className="formBlock">
-        <h1>Register</h1>
-        <input
-          type="text"
-          placeholder="Enter your username"
-          value={registerInputs.username}
-          onChange={(e) => handleRegisterInputs("username", e)}
-          required
-        />
-        <input
-          type="text"
-          placeholder="Enter your email"
-          value={registerInputs.email}
-          onChange={(e) => handleRegisterInputs("email", e)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={registerInputs.password}
-          onChange={(e) => handleRegisterInputs("password", e)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Confirm your password"
-          value={registerInputs.confirmPassword}
-          onChange={(e) => handleRegisterInputs("confirmPassword", e)}
-          required
-        />
+    <>
+      <div className="authContainer">
+        <div className="formBlock">
+          <h1>Register</h1>
+          <input
+            type="text"
+            placeholder="Enter your username"
+            value={registerInputs.username}
+            onChange={(e) => handleRegisterInputs("username", e)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Enter your email"
+            value={registerInputs.email}
+            onChange={(e) => handleRegisterInputs("email", e)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={registerInputs.password}
+            onChange={(e) => handleRegisterInputs("password", e)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Confirm your password"
+            value={registerInputs.confirmPassword}
+            onChange={(e) => handleRegisterInputs("confirmPassword", e)}
+            required
+          />
 
-        <span>
-          Already have an account?{" "}
-          <Link to="/auth/login" className="authLink">
-            Login
-          </Link>
-        </span>
+          <span>
+            Already have an account?{" "}
+            <Link to="/auth/login" className="authLink">
+              Login
+            </Link>
+          </span>
 
-        <div className="authError">
-          {serverErrors && <span>{serverErrors}</span>}
+          <div className="authError">
+            {serverErrors && <span>{serverErrors}</span>}
+          </div>
+
+          <button typeof="submit" onClick={(e) => handleRegister(e)}>
+            Register
+          </button>
         </div>
-
-        <button typeof="submit" onClick={(e) => handleRegister(e)}>
-          Register
-        </button>
       </div>
-    </div>
+
+      <Toast
+        toastList={toastList}
+        position={position}
+        autoDelete={true}
+        autoDeleteTime={666000}
+      />
+    </>
   );
 };
 
