@@ -13,6 +13,8 @@ import rocket from "../../assets/rocket-logo.png";
 import nagad from "../../assets/Nagad-Logo.png";
 import paypal from "../../assets/paypal.png";
 
+import gif from "../../assets/loading/loading_gif.gif";
+
 // Toaster
 import { createToastMessage } from "../../utils/toastUtil";
 import Toast from "../../components/toast/Toast";
@@ -105,7 +107,7 @@ const TicketDetailsPage = () => {
           <div className="ticketDetailsPage_container">
             {loading ? (
               <div className="loading">
-                <h3>Loading....</h3>
+                <img src={gif} alt="" />
               </div>
             ) : (
               <>

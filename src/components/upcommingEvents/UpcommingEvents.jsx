@@ -6,6 +6,7 @@ import Wrapper from "../wrappers/Wrapper";
 // icon import
 import { GoLocation } from "react-icons/go";
 import { Link } from "react-router-dom";
+import gif from "../../assets/loading/loading_gif.gif";
 
 const UpcommingEvents = ({ data, loading }) => {
   return (
@@ -42,7 +43,8 @@ const UpcommingEvents = ({ data, loading }) => {
 
           {loading ? (
             <div className="loading">
-              <h3>Loading.....</h3>
+              {/* <h3>Loading.....</h3> */}
+              <img src={gif} alt="" />
             </div>
           ) : (
             <div className="upcommingEvent__cardContainer">

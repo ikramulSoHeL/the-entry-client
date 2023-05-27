@@ -4,6 +4,7 @@ import "../../styles/pages/index.scss";
 import Wrapper from "../../components/wrappers/Wrapper";
 import { loadStorage } from "../../utils/persistLocalStorage";
 import { getTicketsByUserId } from "../../apis/ticket.apis";
+import gif from "../../assets/loading/loading_gif.gif";
 
 const ProfilePage = () => {
   const user = loadStorage("user");
@@ -54,7 +55,9 @@ const ProfilePage = () => {
 
             {loading ? (
               <div className="loading">
-                <h3>Loading.....</h3>
+                <div className="leftLoader">
+                  <img src={gif} alt="" />
+                </div>
               </div>
             ) : (
               <div className="TicketCardContainer">

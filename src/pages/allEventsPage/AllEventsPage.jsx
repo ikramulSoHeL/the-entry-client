@@ -8,6 +8,8 @@ import Wrapper from "../../components/wrappers/Wrapper";
 import { GoLocation } from "react-icons/go";
 import { Link } from "react-router-dom";
 
+import gif from "../../assets/loading/loading_gif.gif";
+
 const { getEvents } = require("../../apis/event.apis");
 
 const AllEventsPage = () => {
@@ -61,7 +63,7 @@ const AllEventsPage = () => {
 
           {loading ? (
             <div className="loading">
-              <h3>Loading.....</h3>
+              <img src={gif} alt="" />
             </div>
           ) : (
             <div className="upcommingEvent__cardContainer">

@@ -55,7 +55,28 @@ input[type="number"] {
 .loading {
   width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 15px;
+
+  .leftLoader {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  }
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
 
   h3 {
     font-size: 20px;
